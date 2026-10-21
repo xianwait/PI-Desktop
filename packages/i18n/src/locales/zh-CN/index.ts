@@ -2897,6 +2897,7 @@ sklm: {
     planApprovalUnavailable: "该计划审批已失效",
     action: {
       openSettings: "打开设置",
+      openLocalNetworkSettings: "打开“本地网络”设置",
       retry: "重试",
       continue: "继续",
       dismiss: "关闭",

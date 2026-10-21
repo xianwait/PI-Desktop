@@ -64,6 +64,8 @@ export const IPC = {
     storageRemoveBackup: "pi-desktop/storage/removeBackup",
     appGetVersion: "pi-desktop/app/getVersion",
     appOpenFeedback: "pi-desktop/app/openFeedback",
+    /** macOS System Settings → Privacy & Security → Local Network. */
+    appOpenLocalNetworkSettings: "pi-desktop/app/openLocalNetworkSettings",
     appHealth: "pi-desktop/app/health",
     appGetOnboarding: "pi-desktop/app/getOnboarding",
     appDismissOnboarding: "pi-desktop/app/dismissOnboarding",

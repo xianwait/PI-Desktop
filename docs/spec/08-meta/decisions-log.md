@@ -7847,3 +7847,25 @@ must keep splitting are covered by `markdown-blocks.test.mjs`.
   keeps the opaque choice a user already made. See ADR 0332, ADR 0248,
   `04-ux/06-settings-ia.md`, `04-ux/08-component-spec.md`, and
   `apps/desktop/test/macos-window-translucency.test.mjs`.
+
+## 2026-10-25 — The error card offers the macOS Local Network pane (D668)
+
+- Local Network access on macOS 15+ is attributed to the code signature, so
+  adhoc-signed local builds are never shown the TCC prompt and LAN provider
+  requests fail `EHOSTUNREACH` within milliseconds — indistinguishable in the
+  UI from a routing problem. The agent runtime already tags such failures
+  `networkCategory: "unreachable"`, so the assistant error card now shows an
+  "Open Local Network settings" action for `NETWORK_ERROR` with that category.
+- The action invokes a new `pi-desktop/app/openLocalNetworkSettings` channel.
+  The pane URL is a main-owned constant in
+  `electron/main/local-network-settings.ts`; the channel takes no renderer
+  input, keeping the D330 / ADR 0168 rule that renderer- and plugin-supplied
+  strings never reach `shell.openExternal`. There is no in-app probe: TCC has
+  no query API for this permission, and an unattributed build cannot trigger
+  the prompt at all — the pane is the one reliable path.
+- Measured evidence on macOS 27 arm64: the app's own binary fails `net.connect`
+  to the LAN gateway and mDNS send with `EHOSTUNREACH` in ~5 ms while
+  platform-signed `nc`/`ping` succeed in the same second; re-signing the app
+  adhoc does not change the verdict. See ADR 0333 and the "Local Network
+  permission" section of the release runbook.
+- Covered by `apps/desktop/test/local-network-settings.test.mjs`.

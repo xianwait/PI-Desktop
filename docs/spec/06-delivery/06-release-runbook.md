@@ -70,6 +70,14 @@ when macOS `iconutil` is available, without overwriting the canonical source.
   agent sidecar — without it, LAN provider requests from the sidecar fail with
   `EHOSTUNREACH` even though the main process's Test Provider fetch succeeds
   (issue #573).
+- **Attribution caveat (macOS 15+):** the TCC prompt only appears for an
+  attributable code signature. A build released with `CSC_IDENTITY_AUTO_DISCOVERY=false`
+  (or any unsigned/adhoc identity) is never prompted and LAN requests fail
+  immediately; in that case grant access manually in System Settings →
+  Privacy & Security → Local Network, or distribute a Developer-ID-signed
+  build. The assistant error card surfaces this state — `NETWORK_ERROR` with
+  `networkCategory: "unreachable"` — together with an "Open Local Network
+  settings" action (ADR 0333, D668).
 - `Resources/bin/pi-desktop-host-core` — Rust host binary (release build).
 - Windows NSIS builds include an x64 `pi-desktop-host-core.exe` statically
   linked to the MSVC CRT, so a clean Windows x64 or Windows 11 ARM64

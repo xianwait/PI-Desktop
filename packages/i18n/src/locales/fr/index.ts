@@ -2821,6 +2821,7 @@ sklm: {
     "planApprovalUnavailable": "L'approbation du plan n'est plus disponible",
     "action": {
       "openSettings": "Ouvrir les paramètres",
+      "openLocalNetworkSettings": "Ouvrir les réglages Réseau local",
       "retry": "Réessayer",
       "continue": "Continuer",
       "dismiss": "Ignorer"

@@ -2964,6 +2964,7 @@ importConfirm: "Imported extensions run inside the agent process with the same a
     planApprovalUnavailable: "Plan approval is no longer available",
     action: {
       openSettings: "Open settings",
+      openLocalNetworkSettings: "Open Local Network settings",
       retry: "Try again",
       continue: "Continue",
       dismiss: "Dismiss",

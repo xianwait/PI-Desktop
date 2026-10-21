@@ -61,6 +61,12 @@ Windows 可执行文件和原生窗口图标中使用 `build/icon.ico`。渲染�
   Chromium 主进程与 `ELECTRON_RUN_AS_NODE` 的 agent sidecar；否则主进程的
   Test Provider 能过，但 sidecar 走局域网请求会以 `EHOSTUNREACH` 失败
   （issue #573）。
+- **归因限制（macOS 15+）：** TCC 授权框只会对可归因的代码签名弹出。以
+  `CSC_IDENTITY_AUTO_DISCOVERY=false` 发布（或任何未签名/adhoc 身份）的构建
+  不会弹框，局域网请求会立即失败；此时请在 系统设置 → 隐私与安全性 → 本地网络
+  中手动放行，或改用 Developer ID 签名的构建发布。助手错误卡片会呈现该状态 ——
+  `NETWORK_ERROR` 且 `networkCategory: "unreachable"` —— 并提供
+  「打开“本地网络”设置」按钮（ADR 0333、D668）。
 - `Resources/bin/pi-desktop-host-core` — Rust 主机二进制文件（发布版本）。
 - Windows NSIS 构建包含静态链接 MSVC CRT 的 x64
   `pi-desktop-host-core.exe`，因此全新的 Windows x64 或 Windows 11 ARM64

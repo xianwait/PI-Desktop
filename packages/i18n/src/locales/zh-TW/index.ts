@@ -2847,6 +2847,7 @@ sklm: {
     planApprovalUnavailable: "該計畫核准已失效",
     action: {
       openSettings: "開啟設定",
+      openLocalNetworkSettings: "打開「本機網路」設定",
       retry: "重試",
       continue: "繼續",
       dismiss: "關閉",

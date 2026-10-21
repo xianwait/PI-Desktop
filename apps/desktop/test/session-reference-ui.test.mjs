@@ -97,6 +97,9 @@ const shared = load(new URL("../src/features/chat/transcript/shared.tsx", import
   "../../../lib/turn-process": { isThinkingActive: () => false },
   "../../../lib/thinking-visibility": { resolveShowThinking: () => true },
   "../../../lib/transcript-search-context": { TranscriptSearchContext: React.createContext(null) },
+  "../../../lib/api": {
+    api: { openLocalNetworkSettings: () => Promise.resolve({ ok: true }) },
+  },
   "../../../lib/assistant-turns": { messageThinking: () => "" },
   "../../../lib/use-referenced-image-data-url": { useReferencedImageDataUrl: () => undefined },
   "../../../lib/chat-links": { isHtmlFilePath: () => false },

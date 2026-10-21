@@ -2,6 +2,7 @@ import { app, BrowserWindow } from "electron";
 import { dirname, join, resolve } from "node:path";
 import { existsSync, statSync } from "node:fs";
 import { listInstalledFonts } from "../system-fonts";
+import { openLocalNetworkPane } from "../local-network-settings";
 import {
   APP_NAME,
   APP_VERSION,
@@ -92,6 +93,11 @@ export function registerAppIpc({
     const host = getHost();
     if (!host) throw new Error("host unavailable");
     return host.call("app.health");
+  });
+
+  /** The pane URL is a main-owned constant; the renderer sends no argument. */
+  handle(IPC.invoke.appOpenLocalNetworkSettings, async () => {
+    return { ok: await openLocalNetworkPane() };
   });
 
   handle(IPC.invoke.appGetOnboarding, async () => {

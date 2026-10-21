@@ -2856,6 +2856,7 @@ importConfirm: "İçe aktarılan uzantılar ajan sürecinde, ajanın kendi araç
     planApprovalUnavailable: "Plan onayı artık kullanılamıyor",
     action: {
       openSettings: "Ayarları aç",
+      openLocalNetworkSettings: "Yerel Ağ ayarlarını aç",
       retry: "Yeniden dene",
       continue: "Devam et",
       dismiss: "Kapat",

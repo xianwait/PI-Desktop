@@ -2791,6 +2791,7 @@ export const ptBR = {
     planApprovalUnavailable: "A aprovação do plano não está mais disponível",
     action: {
       openSettings: "Abrir configurações",
+      openLocalNetworkSettings: "Abrir configurações de Rede Local",
       retry: "Tentar novamente",
       continue: "Continuar",
       dismiss: "Dispensar"

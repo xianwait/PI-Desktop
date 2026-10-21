@@ -654,6 +654,8 @@ export const api = {
   updatesOpenReleases: () => invoke(IPC.invoke.updatesOpenReleases),
   updatesDismiss: () => invoke(IPC.invoke.updatesDismiss),
   openFeedback: () => invoke(IPC.invoke.appOpenFeedback),
+  openLocalNetworkSettings: () =>
+    invoke<{ ok: boolean }>(IPC.invoke.appOpenLocalNetworkSettings),
   listNotifications: (input?: { unreadOnly?: boolean; limit?: number }) =>
     invoke<NotificationListResult>(IPC.invoke.notificationList, input ?? {}),
   markNotificationRead: (id: string) =>

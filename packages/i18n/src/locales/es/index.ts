@@ -2821,6 +2821,7 @@ sklm: {
     "planApprovalUnavailable": "La aprobación del plan ya no está disponible",
     "action": {
       "openSettings": "Abrir configuración",
+      "openLocalNetworkSettings": "Abrir ajustes de Red local",
       "retry": "Inténtalo de nuevo",
       "continue": "Continuar",
       "dismiss": "Descartar"

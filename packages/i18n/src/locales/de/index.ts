@@ -2823,6 +2823,7 @@ sklm: {
     "planApprovalUnavailable": "Die Planfreigabe ist nicht mehr verfügbar",
     "action": {
       "openSettings": "Einstellungen öffnen",
+      "openLocalNetworkSettings": "Lokale Netzwerke-Einstellungen öffnen",
       "retry": "Noch einmal versuchen",
       "continue": "Weiter",
       "dismiss": "Verwerfen"

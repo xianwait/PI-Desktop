@@ -7,6 +7,7 @@ import {
   useState,
 } from "react";
 import { useTranslation } from "react-i18next";
+import { api } from "../../../lib/api";
 import type {
   MessageAttachment,
   MessageUsage,
@@ -231,6 +232,18 @@ export function AssistantErrorMessage({ message }: { message: UiMessage }) {
     const value = (details as { networkCode?: unknown }).networkCode;
     return typeof value === "string" ? value : undefined;
   })();
+  // An EHOSTUNREACH-class failure to a LAN endpoint is what macOS 15+ looks
+  // like when Local Network access was never granted (or an adhoc-signed build
+  // cannot be attributed, so macOS never prompts). Offer the pane instead of a
+  // generic "check your network" (issue #573).
+  const networkCategory = (() => {
+    const details = error.details;
+    if (!details || typeof details !== "object") return undefined;
+    const value = (details as { networkCategory?: unknown }).networkCategory;
+    return typeof value === "string" ? value : undefined;
+  })();
+  const offerLocalNetworkSettings =
+    error.code === "NETWORK_ERROR" && networkCategory === "unreachable";
 
   return (
     <section className="message-error" aria-label={t("chat.responseError")}>
@@ -284,6 +297,17 @@ export function AssistantErrorMessage({ message }: { message: UiMessage }) {
               }}
             >
               {t("errors.action.openSettings")}
+            </button>
+          ) : null}
+          {offerLocalNetworkSettings ? (
+            <button
+              type="button"
+              className="copy-btn"
+              onClick={() => {
+                void api.openLocalNetworkSettings().catch(() => undefined);
+              }}
+            >
+              {t("errors.action.openLocalNetworkSettings")}
             </button>
           ) : null}
           <button

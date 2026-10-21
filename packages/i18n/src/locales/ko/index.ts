@@ -2862,6 +2862,7 @@ importConfirm: "가져온 확장은 에이전트 프로세스 안에서 에이�
     planApprovalUnavailable: "계획 승인을 더 이상 사용할 수 없습니다",
     action: {
       openSettings: "설정 열기",
+      openLocalNetworkSettings: "로컬 네트워크 설정 열기",
       retry: "다시 시도",
       continue: "계속",
       dismiss: "닫기",
